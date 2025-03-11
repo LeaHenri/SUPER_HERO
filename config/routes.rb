@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[create]
   end
 
-  get 'dashboard', to: 'users#dashboard'
+  get 'dashboard', to: 'pages#dashboard'
 
   resources :bookings, only: [] do
     member do
