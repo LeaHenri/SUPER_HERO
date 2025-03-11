@@ -1,8 +1,20 @@
-<div class=heros_container>
-  <h1> Heroe's list </h1>
+<div class="heros_container">
+  <h1>Heroe's list</h1>
+
+  <div class="row">
     <% @heros.each do |hero| %>
-    <p><%= hero.name %></p>
-    <p><%= hero.power %></p>
-    <%= image_tag(hero.image_url) %>>
+      <div class="col-md-4 mb-4"> <!-- 3 cartes par ligne sur desktop -->
+        <div class="card shadow-sm">
+
+          <!-- Affichage de l'image avec une taille définie -->
+          <%= image_tag(hero.image_url, class: "card-img-top hero-image", alt: hero.name) %>
+
+          <div class="card-body">
+            <h5 class="card-title"><%= hero.name %></h5>
+            <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
+          </div>
+        </div>
+      </div>
     <% end %>
+  </div>
 </div>
