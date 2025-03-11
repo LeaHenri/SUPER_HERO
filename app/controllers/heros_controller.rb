@@ -8,6 +8,7 @@ class HerosController < ApplicationController
 
   def show
     @hero = Hero.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
