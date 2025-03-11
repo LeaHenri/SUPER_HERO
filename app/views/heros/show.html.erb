@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row"></div>
+    <div class="col"></div>
+    <h1><%= @hero.name %></h1>
+    <%= @hero.photo %>
+    <p>Power: <%= @hero.power %></p>
+    <p>Description: <%= @hero.description %></p>
+
+
+    <button class="btn btn-primary">Voulez-vous le réserver ?</button>
+
+    <%= simple_form_for [@hero, @booking] do |f| %>
+      <%= f.input :start_date,  as: :string,
+            input_html: { data: { controller: "datepicker" } }%>
+      <%= f.input :end_date,  as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+      <%= f.button :submit, "Book a SuperHero", class: "btn btn-primary"%>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to "Go to SuperHero list", heros_path %>
