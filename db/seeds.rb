@@ -10,10 +10,14 @@
 
 require "faker"
 
-puts "cleaning DB"
+puts "cleaning DB bookings"
+Booking.destroy_all
+
+puts "cleaning DB heros"
 Hero.destroy_all
 
-puts "cleaning DB"
+
+puts "cleaning DB users"
 User.destroy_all
 
 puts "create a user"
@@ -24,7 +28,7 @@ nicolas = User.create!(first_name: "nicolas", last_name: "schuller", email: "nic
 
 puts "creating heros"
 15.times do
-  Hero.create!(image_url: ["https://images.pexels.com/photos/4061662/pexels-photo-4061662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", "https://images.pexels.com/photos/3180273/pexels-photo-3180273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"].sample, name: Faker::Superhero.name , power: Faker::Superhero.power , description: Faker::Superhero.descriptor, user: User.all.sample)
+  Hero.create!(image_url: ["https://images.pexels.com/photos/4061662/pexels-photo-4061662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", "https://images.pexels.com/photos/3180273/pexels-photo-3180273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"].sample, name: Faker::Superhero.name, power: Faker::Superhero.power , description: Faker::Superhero.descriptor, user: User.all.sample)
 end
 
 puts "Finished!"
