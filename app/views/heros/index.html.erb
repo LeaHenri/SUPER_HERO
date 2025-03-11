@@ -1,0 +1,8 @@
+<div class=heros_container>
+  <h1> Heroe's list </h1>
+    <% @heros.each do |hero| %>
+    <p><%= hero.name %></p>
+    <p><%= hero.power %></p>
+    <%= image_tag(hero.image_url) %>>
+    <% end %>
+</div>
