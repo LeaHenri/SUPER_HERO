@@ -1,0 +1,15 @@
+<div class="container">
+<h1>Renter section </h1>
+<h2>My pending bookings</h2>
+<ul>
+ <% @bookings.each do |booking| %>
+   <li class="card shadow-sm">
+  <%= image_tag(booking.hero.image_url, class: "card-img-top hero-image", alt: booking.hero.name) %> </li>
+  <h5 class="card-title"> <%= booking.hero.name %></h5>
+<% end %>
+</ul>
+
+<button class="btn btn-primary mt-5">
+      <%= link_to "Go to SuperHero list", heros_path, class: "text-decoration-none text-white" %>
+</button>
+</div>
