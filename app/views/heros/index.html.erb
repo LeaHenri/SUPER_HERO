@@ -1,5 +1,12 @@
-<div class="heros_container">
+<div class="container-lg" >
   <h1>Heroe's list</h1>
+  <%= form_with url: heros_path, method: :get, local: true do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.search_field :name %>
+  <%= form.search_field :power %>
+  <%= form.submit "Search" %>
+<% end %>
+
 
   <div class="row">
     <% @heros.each do |hero| %>
@@ -12,6 +19,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= hero.name %></h5>
             <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
+            <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
           </div>
         </div>
       </div>
