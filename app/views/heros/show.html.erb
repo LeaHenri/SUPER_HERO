@@ -1,15 +1,20 @@
 <div class="container">
   <div class="row"></div>
     <div class="col"></div>
-    <h1><%= @hero.name %></h1>
-    <%= @hero.image_url %>
-    <p>Power: <%= @hero.power %></p>
-    <p>Description: <%= @hero.description %></p>
+    <div class="card shadow-sm">
+      <%= image_tag(@hero.image_url, class: "card-img-top hero-image", alt: @hero.name) %>
+    <div class="card-body">
+        <h5 class="card-title"><%= @hero.name %></h5>
+          <p class="card-text"><strong>Power :</strong> <%= @hero.power %></p>
+            <p class="card-text"> Description: <%= @hero.description %></p>
+    </div>
+    </div>
 
+    <div data-controller="toggle" class="mt-5">
+     <button class="btn btn-primary" data-action="click->toggle#fire"> Do you want to rent ? </button>
 
-    <button class="btn btn-primary">Voulez-vous le réserver ?</button>
-
-    <%= simple_form_for [@hero, @booking] do |f| %>
+    <div data-toggle-target="togglableElement" class="d-none">
+     <%= simple_form_for [@hero, @booking] do |f| %>
       <%= f.input :start_date,  as: :string,
             input_html: { data: { controller: "datepicker" } }%>
       <%= f.input :end_date,  as: :string,
@@ -17,7 +22,11 @@
       <%= f.button :submit, "Book a SuperHero", class: "btn btn-primary"%>
     <% end %>
     </div>
+    </div>
+     <button class="btn btn-primary mt-5">
+      <%= link_to "Go to SuperHero list", heros_path, class: "text-decoration-none text-white" %>
+     </button>
+
+    </div>
   </div>
 </div>
-
-<%= link_to "Go to SuperHero list", heros_path %>
