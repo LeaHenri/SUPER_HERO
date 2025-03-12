@@ -28,7 +28,11 @@ nicolas = User.create!(first_name: "nicolas", last_name: "schuller", email: "nic
 
 puts "creating heros"
 15.times do
-  Hero.create!(image_url: ["https://images.pexels.com/photos/4061662/pexels-photo-4061662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", "https://images.pexels.com/photos/3180273/pexels-photo-3180273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"].sample, name: Faker::Superhero.name, power: Faker::Superhero.power , description: Faker::Superhero.descriptor, user: User.all.sample)
+  Hero.create!(image_url: ["https://images.pexels.com/photos/4061662/pexels-photo-4061662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "https://images.pexels.com/photos/3180273/pexels-photo-3180273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "https://images.pexels.com/photos/15668552/pexels-photo-15668552/free-photo-of-portrait-cinematographique-du-modele-masculin-billy-dunston-faisant-le-cosplay-d-aquaman-dans-la-gorge-du-fleuve-columbia-photo-prise-par-le-photographe-de-portland-lance-reis-kickass.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "https://images.pexels.com/photos/15464951/pexels-photo-15464951/free-photo-of-femme-modele-retro-telephone.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"].sample,
+  name: Faker::Superhero.name, power: Faker::Superhero.power , description: Faker::Superhero.descriptor, user: User.all.sample)
 end
 
 puts "Finished!"
