@@ -12,6 +12,20 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "accepted")
+    flash[:notice] = "The booking has been approved"
+    redirect_to dashboard_path
+  end
+
+  def refuse
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "rejected")
+    flash[:notice] = "The booking has been rejected"
+    redirect_to dashboard_path
+  end
+
   private
 
   def booking_params
