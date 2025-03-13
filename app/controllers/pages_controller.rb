@@ -6,6 +6,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @bookings = Booking.where(user: current_user, status: "pending")
-    
+    @heros = Hero.where(user: current_user)
   end
 end
