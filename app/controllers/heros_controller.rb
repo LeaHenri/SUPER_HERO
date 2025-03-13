@@ -4,8 +4,9 @@ class HerosController < ApplicationController
 
   def index
     @heros = Hero.all
-    @heros = Hero.where(name: params[:name]) if params[:name].present?
-    @heros = Hero.where(power: params[:power]) if params[:power].present?
+    @heros = @heros.search_by_name_and_power(params[:query]) if params[:query].present?
+    # @heros = @heros.where(name: params[:name]) if params[:name].present?
+    # @heros = @heros.where(power: params[:power]) if params[:power].present?
   end
 
   def show

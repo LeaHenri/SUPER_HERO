@@ -1,28 +1,25 @@
 <div class="container-lg" >
   <h1>Heroe's list</h1>
-  <%= form_with url: heros_path, method: :get, local: true do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.search_field :name %>
-  <%= form.search_field :power %>
-  <%= form.submit "Search" %>
-<% end %>
-
+ <%= form_with url: heros_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search your hero or your power" %>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+  <% end %>
 
   <div class="row">
     <% @heros.each do |hero| %>
       <div class="col-md-4 mb-4"> <!-- 3 cartes par ligne sur desktop -->
         <div class="card shadow-sm">
-
-          <!-- Affichage de l'image avec une taille définie -->
           <%= cl_image_tag(hero.photo.key, class: "card-img-top hero-image", alt: hero.name, crop: :fill) %>
-
-          <div class="card-body">
-            <h5 class="card-title"><%= hero.name %></h5>
-            <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
-            <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= hero.name %></h5>
+              <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
+              <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
+            </div>
   </div>
+</div>
+<% end %>
+</div>
 </div>
