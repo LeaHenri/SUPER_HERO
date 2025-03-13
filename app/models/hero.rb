@@ -4,4 +4,12 @@ class Hero < ApplicationRecord
 
   validates :power, presence: true
   validates :description, presence: true
+
+  include PgSearch::Model
+pg_search_scope :search_by_name_and_power,
+  against: [:name, :power],
+  using: {
+    tsearch: { prefix: true }
+  }
+
 end
