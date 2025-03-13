@@ -1,28 +1,26 @@
 <div class="container-lg" >
   <h1>Heroe's list</h1>
+ <%= form_with url: heros_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search your hero or your power" %>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+  <% end %>
 
- <div class="container">
-  <div class="row justify-content-center">
-   <div class="col-sm-8 my-3">
-      <%= form_with url: heros_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Type a keyword"
-          %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-
-        <% @heros.each do |hero| %>
+  <div class="row">
+    <% @heros.each do |hero| %>
+      <div class="col-md-4 mb-4"> <!-- 3 cartes par ligne sur desktop -->
+        <div class="card shadow-sm">
           <%= image_tag(hero.image_url, class: "card-img-top hero-image", alt: hero.name) %>
-          <div class="card-body">
-            <h5 class="card-title"><%= hero.name %></h5>
-            <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
-            <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
-          </div>
-        <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= hero.name %></h5>
+              <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
+              <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
+            </div>
 
   </div>
+</div>
+<% end %>
+</div>
 </div>
