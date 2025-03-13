@@ -1,28 +1,28 @@
 <div class="container-lg" >
   <h1>Heroe's list</h1>
-  <%= form_with url: heros_path, method: :get, local: true do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.search_field :name %>
-  <%= form.search_field :power %>
-  <%= form.submit "Search" %>
-<% end %>
 
+ <div class="container">
+  <div class="row justify-content-center">
+   <div class="col-sm-8 my-3">
+      <%= form_with url: heros_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Type a keyword"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 
-  <div class="row">
-    <% @heros.each do |hero| %>
-      <div class="col-md-4 mb-4"> <!-- 3 cartes par ligne sur desktop -->
-        <div class="card shadow-sm">
-
-          <!-- Affichage de l'image avec une taille définie -->
+        <% @heros.each do |hero| %>
           <%= image_tag(hero.image_url, class: "card-img-top hero-image", alt: hero.name) %>
-
           <div class="card-body">
             <h5 class="card-title"><%= hero.name %></h5>
             <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
             <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
+
   </div>
 </div>
