@@ -4,8 +4,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.hero = @hero
     @booking.user = current_user
+    @booking.status = "pending"
     if @booking.save
-      redirect_to hero_path(@hero)
+      redirect_to dashboard_path
     else
       render "heros/show", status: :unprocessable_entity
     end
@@ -14,6 +15,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :status)
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
