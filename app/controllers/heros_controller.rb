@@ -20,8 +20,9 @@ class HerosController < ApplicationController
 
   def create
     @hero = Hero.new(hero_params)
+    @hero.user = current_user
     if @hero.save
-      redirect_to hero_path(@hero), notice: "the super-hero was created successfully"
+      redirect_to dashboard_path, notice: "the super-hero was created successfully"
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,6 +31,6 @@ class HerosController < ApplicationController
 private
 
   def hero_params
-    params.require(:hero).permit(:name, :power, :description)
+    params.require(:hero).permit(:name, :power, :description, :photo)
   end
 end
