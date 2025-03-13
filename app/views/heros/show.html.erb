@@ -2,7 +2,7 @@
   <div class="row"></div>
     <div class="col"></div>
     <div class="card shadow-sm">
-      <%= image_tag(@hero.image_url, class: "card-img-top hero-image", alt: @hero.name) %>
+      <%= cl_image_tag(@hero.photo.key, class: "card-img-top hero-image", alt: @hero.name) %>
     <div class="card-body">
         <h5 class="card-title"><%= @hero.name %></h5>
           <p class="card-text"><strong>Power :</strong> <%= @hero.power %></p>
