@@ -1,15 +1,31 @@
 <div class="container">
-<h1>Renter section </h1>
-<h2>My pending bookings</h2>
-<ul>
- <% @bookings.each do |booking| %>
-   <li class="card shadow-sm">
-  <%= image_tag(booking.hero.image_url, class: "card-img-top hero-image", alt: booking.hero.name) %> </li>
-  <h5 class="card-title"> <%= booking.hero.name %></h5>
-<% end %>
-</ul>
+  <div>
+      <h1>Renter section </h1>
+        <h2>My pending bookings</h2>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <li class="card shadow-sm">
+            <%= cl_image_tag(booking.hero.photo.key, class: "card-img-top hero-image", alt: booking.hero.name) %> </li>
+            <h5 class="card-title"> <%= booking.hero.name %></h5>
+          <% end %>
+        </ul>
 
-<button class="btn btn-primary mt-5">
-      <%= link_to "Go to SuperHero list", heros_path, class: "text-decoration-none text-white" %>
-</button>
+        <button class="btn btn-primary mt-5">
+              <%= link_to "Go to SuperHero list", heros_path, class: "text-decoration-none text-white" %>
+        </button>
+  </div>
+
+  <div class="mt-3 pt-3">
+    <h1>Owner section</h1>
+    <h2>My pending validations</h2>
+    <h2>My SuperHeroes</h2>
+    <ul>
+      <% @heros.each do |hero| %>
+        <li class="card shadow-sm"><%= cl_image_tag(hero.photo.key, class: "mini_card hero-image", alt: hero.name) %>
+        <h5 class="card-title"><%= hero.name %></h5></li>
+      <% end %>
+    </ul>
+    <button class="btn btn-primary mt-5"> <%= link_to "Create a SuperHeroe",  new_hero_path, class: "text-decoration-none text-white" %> </button>
+  </div>
+
 </div>
