@@ -16,7 +16,7 @@
       <% @heros.each do |hero| %>
         <div class="col-md-4 mb-4"> <!-- 3 cartes par ligne sur desktop -->
           <%= link_to hero_path(hero), class: "card-link" do %> <!-- Pour que la card soit cliquable  -->
-            <div class="card shadow-sm">
+            <div class="card shadow-sm card-link">
 
               <%= cl_image_tag(hero.photo.key, class: "card-img-top", alt: hero.name, crop: :fill) %>
                 <div class="card-body">
