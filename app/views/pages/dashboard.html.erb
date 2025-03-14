@@ -30,6 +30,10 @@
       <% end %>
     <% end %>
     <h2>My SuperHeroes</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
     <ul>
       <% @heros.each do |hero| %>
         <li class="card shadow-sm"><%= cl_image_tag(hero.photo.key, class: "mini_card hero-image", alt: hero.name) %>
