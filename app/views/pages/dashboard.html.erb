@@ -30,16 +30,19 @@
       <% end %>
     <% end %>
     <h2>My SuperHeroes</h2>
+<<<<<<< HEAD
 
 <div class="container">
   <div class="row">
     <div class="col-sm">
     <ul>
       <% @heros.each do |hero| %>
+=======
+    <% @heros.each do |hero| %>
+>>>>>>> master
         <li class="card shadow-sm"><%= cl_image_tag(hero.photo.key, class: "mini_card hero-image", alt: hero.name) %>
         <h5 class="card-title"><%= hero.name %></h5></li>
-      <% end %>
-    </ul>
+    <% end %>
     <button class="btn btn-primary mt-5"> <%= link_to "Create a SuperHeroe",  new_hero_path, class: "text-decoration-none text-white" %> </button>
   </div>
 
