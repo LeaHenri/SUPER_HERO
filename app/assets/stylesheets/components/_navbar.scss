@@ -1,6 +1,11 @@
+.container-lg {
+  margin-top: 50px; /* Espace entre la navbar et le reste */
+}
+
+
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #f3a909;
 }
 
 .navbar-lewagon .navbar-collapse {
