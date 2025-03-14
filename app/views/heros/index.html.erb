@@ -1,25 +1,31 @@
 <div class="container-lg" >
-  <h1>Heroe's list</h1>
- <%= form_with url: heros_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Search your hero or your power" %>
-    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-  <% end %>
 
-  <div class="row">
-    <% @heros.each do |hero| %>
-      <div class="col-md-4 mb-4"> <!-- 3 cartes par ligne sur desktop -->
-        <div class="card shadow-sm">
-          <%= cl_image_tag(hero.photo.key, class: "card-img-top hero-image", alt: hero.name, crop: :fill) %>
-            <div class="card-body">
-              <h5 class="card-title"><%= hero.name %></h5>
-              <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
-              <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
+
+      <h1>Heroes</h1>
+
+      <%= form_with url: heros_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search your hero or your power" %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
+
+
+    <div class="row mt-4">
+      <% @heros.each do |hero| %>
+        <div class="col-md-4 mb-4"> <!-- 3 cartes par ligne sur desktop -->
+          <%= link_to hero_path(hero), class: "card-link" do %> <!-- Pour que la card soit cliquable  -->
+            <div class="card shadow-sm card-link">
+
+              <%= cl_image_tag(hero.photo.key, class: "card-img-top", alt: hero.name, crop: :fill) %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= hero.name %></h5>
+                  <p class="card-text"><strong><i class="fa-solid fa-bolt"></i></strong> <%= hero.power %></p>
+                </div>
             </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-<% end %>
-</div>
-</div>
