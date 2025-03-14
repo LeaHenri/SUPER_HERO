@@ -13,13 +13,13 @@
       <div class="col-md-4 mb-4"> <!-- 3 cartes par ligne sur desktop -->
         <div class="card shadow-sm">
           <%= cl_image_tag(hero.photo.key, class: "card-img-top hero-image", alt: hero.name, crop: :fill) %>
-            <div class="card-body">
-              <h5 class="card-title"><%= hero.name %></h5>
-              <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
-              <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
-            </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= hero.name %></h5>
+            <p class="card-text"><strong>Power :</strong> <%= hero.power %></p>
+            <%= link_to "Know more", hero_path(hero), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-</div>
-<% end %>
-</div>
 </div>
