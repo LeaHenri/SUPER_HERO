@@ -17,33 +17,34 @@
   </div>
 
   <div class="mt-3 pt-3">
-    <h1>Owner section</h1>
-    <h2>My pending validations</h2>
+    <h1><i class="fa-solid fa-hand-spock"></i>Owner section</h1>
+    <h2>My validations</h2>
+
     <% @bookings_owner.each do |booking| %>
-    <%= booking.hero.name %>
-    <%= booking.start_date %>
-    <%= booking.end_date %>
-    <%= booking.status %>
-      <% if booking.status == "pending" %>
-        <%= button_to "accept", accept_booking_path(booking), method: :patch %>
-        <%= button_to "refuse", refuse_booking_path(booking), method: :patch %>
+      <div class= "pendinglist d-flex flex-row">
+        <%= booking.hero.name %> |
+          starting date on <%= booking.start_date %> |
+          ending date on <%= booking.end_date %> |
+        <%= booking.status %>
+        <% if booking.status == "pending" %>
+        <%= button_to "accept", accept_booking_path(booking), method: :patch, class:"btn btn-primary btn-sm" %>
+        or <%= button_to "refuse", refuse_booking_path(booking), method: :patch, class:"btn btn-primary btn-sm" %>
       <% end %>
+      </div>
     <% end %>
+
     <h2>My SuperHeroes</h2>
-<<<<<<< HEAD
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-    <ul>
+<div class="cards">
       <% @heros.each do |hero| %>
-=======
-    <% @heros.each do |hero| %>
->>>>>>> master
-        <li class="card shadow-sm"><%= cl_image_tag(hero.photo.key, class: "mini_card hero-image", alt: hero.name) %>
-        <h5 class="card-title"><%= hero.name %></h5></li>
+        <div class="card shadow-sm d-flex flex-row"><%= cl_image_tag(hero.photo.key, class: "mini_card hero-image", alt: hero.name) %>
+        <div class="m-3 mt-5"> <h5 class="card-title"><%= hero.name %></h5>
+        <p class="text-dark"><%= hero.power %> | <%= hero.description %></p>
+        </div>
+        </div>
     <% end %>
-    <button class="btn btn-primary mt-5"> <%= link_to "Create a SuperHeroe",  new_hero_path, class: "text-decoration-none text-white" %> </button>
-  </div>
 
+</div>
+<button class="btn btn-primary mt-5"> <%= link_to "Create a SuperHeroe",  new_hero_path, class: "text-decoration-none text-white" %> </button>
+</div>
 </div>
